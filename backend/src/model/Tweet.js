@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://localhost/twitter');
+mongoose.connect('mongodb://localhost/twitter', { useNewUrlParser: true });
 
 const Schema = mongoose.Schema;
 
@@ -9,6 +9,11 @@ const tweetSchema = new Schema({
   author: String,
   createdAt: Date,
 });
+
+const ObjectId = mongoose.Types.ObjectId;
+ObjectId.prototype.valueOf = function () {
+  return this.toString();
+};
 
 const TweetModel = mongoose.model('Tweet', tweetSchema);
 
