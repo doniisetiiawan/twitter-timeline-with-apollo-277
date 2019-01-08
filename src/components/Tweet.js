@@ -1,13 +1,11 @@
-/* eslint-disable react/jsx-filename-extension,react/prop-types */
+/* eslint-disable react/forbid-prop-types,react/jsx-filename-extension */
 import React, { Component } from 'react';
 import moment from 'moment';
 
+import PropTypes from 'prop-types';
 import Mutation from '../shared/components/Mutation';
 
-import {
-  MUTATION_DELETE_TWEET,
-  MUTATION_UPDATE_TWEET,
-} from '../graphql/mutations';
+import { MUTATION_DELETE_TWEET, MUTATION_UPDATE_TWEET } from '../graphql/mutations';
 
 import { QUERY_GET_TWEETS } from '../graphql/queries';
 
@@ -149,5 +147,9 @@ class Tweet extends Component {
     ));
   }
 }
+
+Tweet.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default Tweet;
